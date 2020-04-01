@@ -11,7 +11,7 @@ event agent_detect(c: connection, name: string) {
 		if (orig_addr in agentTable) {
 			add agentTable[orig_addr][agent];
 		} else {
-			agentTable[orig_addr] = set[agent];
+			agentTable[orig_addr] = set(agent);
 		}
 	}
 }
@@ -19,7 +19,7 @@ event agent_detect(c: connection, name: string) {
 event zeek_done() {
 	for (orig_addr in agentTable) {
 		if (|agentTable[orig_addr][agent]| >= 3) {
-			print(orig_addr + " is a proxy");
+			print orig_addr," is a proxy";
 		}
 	}
 }
