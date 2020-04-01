@@ -4,7 +4,7 @@
 
 global agentTable :table[addr] of set[string] = table();
 
-event agent_detect(c: connection, name: string) {
+event http_header(c: connection, is_orig: bool, name: string, value: string) {
 	local orig_addr: addr = c$id$orig_h;
 	if (c$http?$user_agent){
 		local agent: string = to_lower(c$http$user_agent);
