@@ -19,8 +19,7 @@ event agent_detect(c: connection, name: string) {
 event zeek_done() {
 	for (orig_addr in agentTable) {
 		if (|agentTable[orig_addr]| >= 3) {
-			proxyStatement = "{agent} is a proxy".format(agent = orig_addr);
-			print proxyStatement;
+			print(orig_addr + " is a proxy";
 		}
 	}
 }
